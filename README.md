@@ -16,8 +16,6 @@ Participants qui exploitent Datadog sans écrire de code : exploitation, support
 | Atelier | Fichier | Dérivé de | Écriture |
 |---:|---|---|---|
 | 3 | [Se repérer dans Datadog et lire l'état d'un service](M03_Se_reperer_lire_etat_service.md) | M03, allégé | aucune |
-| 4 | [Filtrer et cadrer une analyse avec les tags](M04_Filtrer_cadrer_tags.md) | M04, refondu | vue `[TRAINING] M04 - <participant>` |
-| 8 | [Créer, déclencher et lire une alerte sans écrire de code](M08_Creer_lire_alerte.md) | M08, parties sans script | monitor `[TRAINING] M08 APM - <participant>` |
 | 9 | [Construire un dashboard et qualifier une alerte](M09_Dashboard_qualification_alerte.md) | M09 et raisonnement du M10 | dashboard `[TRAINING] M09 - <participant>` |
 
 Continuité :
