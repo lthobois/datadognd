@@ -21,7 +21,6 @@ Auditer un dashboard existant, construire votre propre dashboard de qualificatio
 - d'un dashboard `[TRAINING] M09 - <participant>` de treize widgets, organisé de l'impact vers le diagnostic ;
 - d'une note de lecture et de quatre groupes de widgets ;
 - d'une variable de dashboard `env` utilisée par tous les widgets de données ;
-- d'une lecture de la situation réelle et d'une qualification d'incident rédigées dans `reponses-A9.txt`.
 
 ## Environnement
 
@@ -34,33 +33,7 @@ Auditer un dashboard existant, construire votre propre dashboard de qualificatio
 
 La seule écriture autorisée est la création et la modification de **votre** dashboard `[TRAINING] M09 - <participant>`.
 
-N'activez aucun partage public, ne modifiez aucun dashboard existant et ne modifiez aucun monitor : les monitors sont seulement affichés. Ne regroupez jamais un widget par utilisateur, session, adresse IP ou URL complète.
-
 Remplacez `<participant>` par l'identifiant fourni par le formateur, par exemple `loic`.
-
-Si vous ne disposez pas du droit de créer un dashboard, réalisez la thématique 1, puis suivez les thématiques 2 à 5 sur le dashboard du formateur.
-
-## Fichier de réponses
-
-Créez dans votre éditeur un fichier nommé `reponses-A9.txt` et copiez-y la trame suivante. Vous compléterez la première partie à la thématique 4 et la seconde à la thématique 5.
-
-```text
-Atelier 9 — Dashboard de qualification
-Participant :
-
-Lecture de la situation réelle
-  Anomalie la plus marquée (widget, heure) :
-  Périmètre (commande ou opération concernée) :
-  Signal non touché :
-
-Qualification de l'incident signalé
-  Impact utilisateur :
-  Depuis quand :
-  Périmètre touché :
-  Cause probable lue dans les logs :
-  Alerte déclenchée (oui / non) et monitor concerné :
-  Décision (clore / surveiller / escalader) et raison :
-```
 
 ## Sources de données utilisées
 
@@ -73,7 +46,7 @@ Le dashboard réunit trois sources réelles et deux monitors existants :
 | Logs `eu-interfaces` | les messages écrits par les traitements, dont le nom de la commande exécutée | logs applicatifs |
 | Monitors existants « Facture V2 » et « app-bamboo » | l'état des alertes déjà en place dans l'organisation | alerte |
 
-Les traces et les logs de `eu-interfaces` décrivent le même service, mais aucun identifiant ne relie une trace à ses logs. Aucun lien technique entre les sessions RUM de `peopulse` et les traitements de `eu-interfaces` n'a été vérifié. Elles sont réunies ici pour apprendre à organiser un dashboard selon l'ordre de lecture d'un incident. Sur un dashboard de production, ces liens doivent être vérifiés avant d'en tirer une conclusion.
+Les traces et les logs de `eu-interfaces` décrivent le même service, mais aucun identifiant ne relie une trace à ses logs. Aucun lien technique entre les sessions RUM de `peopulse` et les traitements de `eu-interfaces` existe. Elles sont réunies ici pour apprendre à organiser un dashboard selon l'ordre de lecture d'un incident. Sur un dashboard de production, ces liens doivent être vérifiés avant d'en tirer une conclusion.
 
 ## Plan du dashboard
 
@@ -92,7 +65,7 @@ Les traces et les logs de `eu-interfaces` décrivent le même service, mais aucu
 +----------------------------------------------------------------+
 ```
 
-Chaque widget répond à une question et conduit à une action. Les questions sont rappelées sous chaque action de la thématique 3.
+Chaque widget répond à une question et conduit à une action.
 
 # 1. Auditer un dashboard existant
 
@@ -105,9 +78,7 @@ Chaque widget répond à une question et conduit à une action. Les questions so
 - **A9-1.1.3** Ne cliquez sur aucun widget pour l'éditer.
 - **A9-1.1.4** Observez la période active et les variables affichées dans **Filter by**.
 
-**Résultat attendu :** vous savez sur quelle période et quel périmètre portent les widgets.
-
-**Interprétation :** une variable permet de changer le périmètre de tout le dashboard en un clic. Par exemple, une variable `version` permet de comparer deux versions déployées sans dupliquer les widgets.
+**Résultat attendu :** vous savez sur quelle période et quel périmètre portent les widgets. Une variable permet de changer le périmètre de tout le dashboard en un clic. Par exemple, une variable `version` permet de comparer deux versions déployées sans dupliquer les widgets.
 
 ## 1.2. Associer une question à chaque widget et repérer l'ordre de lecture impact → chronologie → périmètre → diagnostic
 
@@ -120,9 +91,7 @@ Chaque widget répond à une question et conduit à une action. Les questions so
 - **A9-1.2.5** Repérez un widget qui permet de réduire le périmètre, par exemple le camembert **Exécutions par Interfaces**.
 - **A9-1.2.6** Repérez un widget qui oriente vers le diagnostic, par exemple la liste **Exécutions en erreurs**.
 
-**Résultat attendu :** en comparant vos repérages avec le tableau ci-dessous, vous constatez que l'impact, le périmètre et le diagnostic sont couverts, mais qu'aucun widget n'est consacré à la chronologie.
-
-**Interprétation :** l'ordre de référence est le suivant :
+**Résultat attendu :** en comparant vos repérages avec le tableau ci-dessous, vous constatez que l'impact, le périmètre et le diagnostic sont couverts, mais qu'aucun widget n'est consacré à la chronologie. L'ordre de référence est le suivant :
 
 | Niveau | Question | Exemple de widget |
 |---|---|---|
@@ -152,9 +121,7 @@ Lisez le tableau suivant, que vous appliquerez à la thématique 3 :
 - **A9-1.3.1** Revenez à `Monitoring EU-Interfaces` et identifiez le type de deux de ses widgets.
 - **A9-1.3.2** Pour chacun, déterminez sa question, retrouvez dans le tableau le type qui y répond le mieux, et comparez avec le type utilisé.
 
-**Résultat attendu :** pour chacun des deux widgets, vous savez si son type est adapté à sa question ou lequel l'aurait mieux été.
-
-**Interprétation :** un **Query Value** masque la chronologie ; une **Timeseries** montre mal qui contribue le plus. C'est pourquoi un bon dashboard combine plusieurs types sur une même source.
+**Résultat attendu :** pour chacun des deux widgets, vous savez si son type est adapté à sa question ou lequel l'aurait mieux été. Un **Query Value** masque la chronologie ; une **Timeseries** montre mal qui contribue le plus. C'est pourquoi un bon dashboard combine plusieurs types sur une même source.
 
 # 2. Créer le dashboard et son cadre de lecture
 
@@ -176,11 +143,7 @@ Lisez le tableau suivant, que vous appliquerez à la thématique 3 :
 - **A9-2.1.7** Vérifiez l'apparition de la mention **Title Saved**, puis fermez la fenêtre du titre avec Échap.
 - **A9-2.1.8** N'utilisez pas le bouton **Share**.
 
-**Résultat attendu :** un dashboard vide portant votre identifiant est ouvert.
-
-**Vérification :** l'onglet du navigateur affiche `[TRAINING] M09 - <participant>`.
-
-**Interprétation :** Datadog enregistre automatiquement le dashboard dès sa création. Un dashboard abandonné reste donc dans la liste avec son nom par défaut : renommez-le toujours immédiatement.
+**Résultat attendu :** un dashboard vide portant votre identifiant est ouvert. L'onglet du navigateur affiche `[TRAINING] M09 - <participant>`. Datadog enregistre automatiquement le dashboard dès sa création. Un dashboard abandonné reste donc dans la liste avec son nom par défaut : renommez-le toujours immédiatement.
 
 ## 2.2. Ajouter la variable de dashboard `env` avec la valeur par défaut `prod`
 
@@ -192,9 +155,7 @@ Lisez le tableau suivant, que vous appliquerez à la thématique 3 :
 - **A9-2.2.4** Dans **Default value**, saisissez `prod`, cochez la case `prod` proposée, puis cliquez dans une zone vide du panneau pour refermer la liste.
 - **A9-2.2.5** Cliquez sur **Save** en haut du panneau.
 
-**Résultat attendu :** le bandeau affiche **Filter by** avec la variable `env` à `prod`.
-
-**Interprétation :** la variable n'agit que sur les widgets dont la requête contient `$env`. Vous l'ajouterez dans chaque widget de données à la thématique 3.
+**Résultat attendu :** le bandeau affiche **Filter by** avec la variable `env` à `prod`. La variable n'agit que sur les widgets dont la requête contient `$env`. Vous l'ajouterez dans chaque widget de données à la thématique 3.
 
 ## 2.3. Ajouter une note de lecture indiquant la question du dashboard, ses sources et ses limites
 
@@ -275,11 +236,7 @@ Widget 3 - temps de chargement. Question : les utilisateurs attendent-ils plus q
 - **A9-3.1.13** Cliquez sur **Avg of** et choisissez **Pc75**.
 - **A9-3.1.14** Donnez le titre `Impact - temps de chargement p75 peopulse` et cliquez sur **Save**.
 
-**Résultat attendu :** le groupe contient un nombre d'erreurs, l'évolution des vues et un temps de chargement d'environ une seconde.
-
-**Vérification :** si le nombre d'erreurs vaut zéro, sélectionnez **Past 1 Day** dans le sélecteur de période du dashboard : l'activité de `peopulse` dépend des heures de travail des utilisateurs.
-
-**Interprétation :** **Pc75** est le 75e centile : 75 % des pages se chargent plus vite que cette valeur. C'est l'indicateur retenu par les navigateurs pour juger l'expérience. Une chute brutale du nombre de vues en journée peut signaler que les utilisateurs n'arrivent plus à charger l'application, même sans hausse des erreurs.
+**Résultat attendu :** le groupe contient un nombre d'erreurs, l'évolution des vues et un temps de chargement d'environ une seconde. Si le nombre d'erreurs vaut zéro, sélectionnez **Past 1 Day** dans le sélecteur de période du dashboard : l'activité de `peopulse` dépend des heures de travail des utilisateurs. **Pc75** est le 75e centile : 75 % des pages se chargent plus vite que cette valeur. C'est l'indicateur retenu par les navigateurs pour juger l'expérience. Une chute brutale du nombre de vues en journée peut signaler que les utilisateurs n'arrivent plus à charger l'application, même sans hausse des erreurs.
 
 ## 3.2. Créer le groupe `Comportement des traitements` et y ajouter quatre widgets APM `eu-interfaces` / `console` : requêtes, comparaison avec la veille, erreurs et latence p95
 
@@ -317,11 +274,7 @@ Widget 7 - latence. Question : les traitements durent-ils plus longtemps que d'h
 - **A9-3.2.15** Dans le groupe, ajoutez un widget **Timeseries**, réglez la source comme ci-dessus, puis choisissez la mesure **p95 Latency**.
 - **A9-3.2.16** Donnez le titre `Traitements - latence p95 eu-interfaces / console` et cliquez sur **Save**.
 
-**Résultat attendu :** le groupe affiche le volume, l'écart avec la veille en pourcentage, les erreurs et la latence des traitements.
-
-**Vérification :** avant que vous le remplaciez, le titre suggéré par Datadog contient `for {$env}` ou `for {env:prod}` : la variable est bien appliquée.
-
-**Interprétation :** la latence p95 de `console` se compte en minutes, car ce sont des traitements planifiés et non des pages web. Placez toujours le volume avant la latence : avec peu d'exécutions, un seul traitement long suffit à faire bondir la p95. Le widget **Change** évite de mémoriser les valeurs habituelles : il affiche directement l'écart, par exemple `+2,3 %`.
+**Résultat attendu :** le groupe affiche le volume, l'écart avec la veille en pourcentage, les erreurs et la latence des traitements. Avant que vous le remplaciez, le titre suggéré par Datadog contient `for {$env}` ou `for {env:prod}` : la variable est bien appliquée. La latence p95 de `console` se compte en minutes, car ce sont des traitements planifiés et non des pages web. Placez toujours le volume avant la latence : avec peu d'exécutions, un seul traitement long suffit à faire bondir la p95. Le widget **Change** évite de mémoriser les valeurs habituelles : il affiche directement l'écart, par exemple `+2,3 %`.
 
 ## 3.3. Créer le groupe `Logs applicatifs` et y ajouter quatre widgets de logs `eu-interfaces` : volume par statut, erreurs, commandes en erreur et derniers messages
 
@@ -370,11 +323,7 @@ Widget 11 - derniers messages. Question : que disent les dernières erreurs ? Ac
 - **A9-3.3.18** Conservez les colonnes **Date**, **Host**, **Service** et **Content** ; n'ajoutez aucune colonne d'identifiant.
 - **A9-3.3.19** Donnez le titre `Logs - dernières erreurs` et cliquez sur **Save**.
 
-**Résultat attendu :** le groupe affiche le volume de logs par statut en barres, le nombre d'erreurs, un classement des commandes et une liste de messages.
-
-**Vérification :** sur **Past 1 Day**, le widget 10 affiche des noms de commandes de la forme `mission:export:…` ou `facture:export:…`. Sur une heure sans erreur, les widgets 9 et 10 affichent « (No data) » ou « No Data » : ce n'est pas une panne, mais l'absence de logs en erreur sur la période.
-
-**Interprétation :** une application peut écrire en `Error` des situations attendues, par exemple « aucun fichier à exporter ». Le volume d'erreurs seul ne suffit donc pas : c'est la concentration sur une commande, ou l'apparition d'un nouveau message, qui signale un problème. Si un message affiché contient un identifiant de personne, supprimez le widget **List** et conservez le classement par commande.
+**Résultat attendu :** le groupe affiche le volume de logs par statut en barres, le nombre d'erreurs, un classement des commandes et une liste de messages. Sur **Past 1 Day**, le widget 10 affiche des noms de commandes de la forme `mission:export:…` ou `facture:export:…`. Sur une heure sans erreur, les widgets 9 et 10 affichent « (No data) » ou « No Data » : ce n'est pas une panne, mais l'absence de logs en erreur sur la période. Une application peut écrire en `Error` des situations attendues, par exemple « aucun fichier à exporter ». Le volume d'erreurs seul ne suffit donc pas : c'est la concentration sur une commande, ou l'apparition d'un nouveau message, qui signale un problème. Si un message affiché contient un identifiant de personne, supprimez le widget **List** et conservez le classement par commande.
 
 ## 3.4. Créer le groupe `Alerte` et y ajouter l'état du monitor existant « Facture V2 » et le graphique d'un monitor de traitements
 
@@ -403,9 +352,7 @@ Widget 13 - erreurs d'un traitement et seuil d'alerte. Question : à quoi ressem
 - **A9-3.4.8** Conservez la visualisation **Timeseries**.
 - **A9-3.4.9** Donnez le titre `Alerte - erreurs console app-bamboo et seuil`, appuyez sur Tab, puis cliquez sur **Save**.
 
-**Résultat attendu :** le widget 12 affiche le monitor « Facture V2 » et son état, en général `OK` ; le widget 13 affiche une courbe d'erreurs, la zone rouge au-dessus du seuil `y > 5` et l'état du monitor.
-
-**Interprétation :** l'**Alert Graph** n'accepte que les monitors de métriques : un monitor de logs comme « Facture V2 » n'apparaît pas dans sa liste, d'où l'usage du **Monitor Summary** pour ce dernier. Aucun de ces deux monitors ne surveille `eu-interfaces` : vous constaterez à la thématique 5 ce que cette absence implique.
+**Résultat attendu :** le widget 12 affiche le monitor « Facture V2 » et son état, en général `OK` ; le widget 13 affiche une courbe d'erreurs, la zone rouge au-dessus du seuil `y > 5` et l'état du monitor. L'**Alert Graph** n'accepte que les monitors de métriques : un monitor de logs comme « Facture V2 » n'apparaît pas dans sa liste, d'où l'usage du **Monitor Summary** pour ce dernier. Aucun de ces deux monitors ne surveille `eu-interfaces` : vous constaterez à la thématique 5 ce que cette absence implique.
 
 ## 3.5. Vérifier l'ordre de lecture et enregistrer la période de référence
 
@@ -415,9 +362,7 @@ Widget 13 - erreurs d'un traitement et seuil d'alerte. Question : à quoi ressem
 - **A9-3.5.2** Si un widget se trouve hors de son groupe, faites-le glisser par sa barre de titre jusque dans le groupe.
 - **A9-3.5.3** Sélectionnez **Past 1 Day** comme période.
 
-**Résultat attendu :** le dashboard se lit de haut en bas, conformément au plan du dashboard.
-
-**Vérification :** chaque widget porte un titre qui commence par son groupe, par exemple `Impact -`, `Traitements -`, `Logs -` ou `Alerte -`.
+**Résultat attendu :** le dashboard se lit de haut en bas, conformément au plan du dashboard. Chaque widget porte un titre qui commence par son groupe, par exemple `Impact -`, `Traitements -`, `Logs -` ou `Alerte -`.
 
 # 4. Exploiter le dashboard sur la situation réelle
 
@@ -440,9 +385,7 @@ Périmètre (commande ou opération concernée) : cmad:export:efs, près de 90 %
 Signal non touché : erreurs APM toujours à 0 ; pas d'impact visible côté navigateur
 ```
 
-**Résultat attendu :** l'anomalie est datée et attribuée à une commande précise.
-
-**Interprétation :** le dashboard révèle ici une situation fréquente : les traitements se terminent sans erreur côté APM, alors que leurs logs signalent des erreurs massives sur une seule commande. Sans le widget de classement, on aurait seulement vu « beaucoup d'erreurs ». C'est l'information à transmettre à l'équipe propriétaire, accompagnée du nom de la commande et de l'heure.
+**Résultat attendu :** l'anomalie est datée et attribuée à une commande précise. Le dashboard révèle ici une situation fréquente : les traitements se terminent sans erreur côté APM, alors que leurs logs signalent des erreurs massives sur une seule commande. Sans le widget de classement, on aurait seulement vu « beaucoup d'erreurs ». C'est l'information à transmettre à l'équipe propriétaire, accompagnée du nom de la commande et de l'heure.
 
 ## 4.2. Changer la variable `env` puis la période pour vérifier ce que chaque widget affiche
 
@@ -453,9 +396,7 @@ Signal non touché : erreurs APM toujours à 0 ; pas d'impact visible côté nav
 - **A9-4.2.3** Revenez à `prod` de la même façon : décochez `recette` et cochez `prod`.
 - **A9-4.2.4** Sélectionnez **Past 1 Hour**, observez les widgets qui se vident, puis revenez à **Past 1 Day**.
 
-**Résultat attendu :** les widgets APM se mettent à jour en `recette` ; les widgets RUM deviennent vides, car `peopulse` n'envoie des données qu'en `prod` ; les widgets de logs affichent les logs de `recette` s'il y en a sur la période.
-
-**Interprétation :** un widget vide n'indique pas une panne. Il peut venir de l'environnement, de la période ou de l'absence d'activité. Les widgets du groupe `Alerte` ne changent pas : ils affichent les monitors tels qu'ils ont été définis.
+**Résultat attendu :** les widgets APM se mettent à jour en `recette` ; les widgets RUM deviennent vides, car `peopulse` n'envoie des données qu'en `prod` ; les widgets de logs affichent les logs de `recette` s'il y en a sur la période. Un widget vide n'indique pas une panne. Il peut venir de l'environnement, de la période ou de l'absence d'activité. Les widgets du groupe `Alerte` ne changent pas : ils affichent les monitors tels qu'ils ont été définis.
 
 ## 4.3. Ouvrir le détail d'un widget sans quitter le dashboard
 
@@ -469,9 +410,7 @@ Signal non touché : erreurs APM toujours à 0 ; pas d'impact visible côté nav
 - **A9-4.3.6** Dans `Traitements - requêtes eu-interfaces / console`, cliquez sur un point de la courbe et observez que **View traces** et **View logs** sont grisés ; ne cliquez pas sur **Add annotation**, puis cliquez à côté du menu pour le fermer.
 - **A9-4.3.7** Dans `Alerte - état du monitor Facture V2`, cliquez sur le nom du monitor, lisez sa requête et son historique sans rien modifier, puis revenez au dashboard.
 
-**Résultat attendu :** le détail des logs s'ouvre en un clic depuis le classement des commandes, et le monitor depuis son résumé.
-
-**Interprétation :** les widgets **APM Metrics** ne proposent pas de lien vers les traces : pour les traces, ouvrez la page APM du service. C'est une limite à connaître lorsqu'on conçoit un dashboard : un widget de logs ou de monitor mène directement au détail, un widget de métrique APM non.
+**Résultat attendu :** le détail des logs s'ouvre en un clic depuis le classement des commandes, et le monitor depuis son résumé. Les widgets **APM Metrics** ne proposent pas de lien vers les traces : pour les traces, ouvrez la page APM du service. C'est une limite à connaître lorsqu'on conçoit un dashboard : un widget de logs ou de monitor mène directement au détail, un widget de métrique APM non.
 
 ## 4.4. Afficher un widget en plein écran puis relire sa requête en mode édition sans la modifier
 
@@ -483,9 +422,7 @@ Signal non touché : erreurs APM toujours à 0 ; pas d'impact visible côté nav
 - **A9-4.4.4** Identifiez la source, la recherche, la mesure et le regroupement.
 - **A9-4.4.5** Cliquez sur **Cancel** sans rien modifier.
 
-**Résultat attendu :** vous savez dire en une phrase ce que compte le widget : « le nombre de logs en erreur de `eu-interfaces`, dans l'environnement choisi, par commande ».
-
-**Interprétation :** un titre peut mentir, la requête non. Avant de vous fier à un widget hérité, relisez sa requête.
+**Résultat attendu :** vous savez dire en une phrase ce que compte le widget : « le nombre de logs en erreur de `eu-interfaces`, dans l'environnement choisi, par commande ». Un titre peut mentir, la requête non. Avant de vous fier à un widget hérité, relisez sa requête.
 
 # 5. Qualifier un incident signalé avec le dashboard
 
@@ -501,9 +438,7 @@ L'équipe comptabilité signale : « depuis ce matin, certaines factures ne sont
 - **A9-5.1.4** Lisez le groupe `Logs applicatifs` : dans `Logs - commandes en erreur`, repérez les commandes qui commencent par `facture:export`, par exemple `facture:export:vplog` ou `facture:export:lohr`.
 - **A9-5.1.5** Lisez le groupe `Alerte` : le monitor « Facture V2 » est-il en alerte ?
 
-**Résultat attendu :** au moins une commande `facture:export:…` apparaît dans le classement des commandes en erreur, alors que les groupes `Impact utilisateur` et `Comportement des traitements` ne montrent pas de rupture et que le monitor « Facture V2 » reste `OK`.
-
-**Interprétation :** le signalement est confirmé par les logs et localisé sur des commandes précises, mais il ne se voit ni dans l'APM ni dans le RUM. C'est un incident métier : les traitements s'exécutent, mais une partie de leur travail échoue. Le monitor « Facture V2 » reste `OK` parce qu'il surveille un autre service, `app-sigman-calc` : aucune alerte ne couvre les exports de factures de `eu-interfaces`. C'est un trou de détection, à signaler en même temps que l'incident.
+**Résultat attendu :** au moins une commande `facture:export:…` apparaît dans le classement des commandes en erreur, alors que les groupes `Impact utilisateur` et `Comportement des traitements` ne montrent pas de rupture et que le monitor « Facture V2 » reste `OK`. Le signalement est confirmé par les logs et localisé sur des commandes précises, mais il ne se voit ni dans l'APM ni dans le RUM. C'est un incident métier : les traitements s'exécutent, mais une partie de leur travail échoue. Le monitor « Facture V2 » reste `OK` parce qu'il surveille un autre service, `app-sigman-calc` : aucune alerte ne couvre les exports de factures de `eu-interfaces`. C'est un trou de détection, à signaler en même temps que l'incident.
 
 ## 5.2. Lire la cause probable dans les logs de la commande `facture:export` la plus touchée
 
@@ -514,9 +449,7 @@ L'équipe comptabilité signale : « depuis ce matin, certaines factures ne sont
 - **A9-5.2.3** Fermez le panneau avec sa croix.
 - **A9-5.2.4** Survolez les barres d'erreur de `Logs - volume par statut` pour repérer à partir de quelle heure les erreurs apparaissent.
 
-**Résultat attendu :** les messages se répètent, par exemple « Pas de code analytique pour la facture BC4/00017/24 » ou « Facture id … invalide : CODE_FOURNISSEUR est manquant », et les erreurs reviennent par salves à chaque heure pleine.
-
-**Interprétation :** un message qui se répète à l'identique pour de nombreuses factures désigne une cause commune. Ici, des données manquent dans les factures, par exemple le code analytique, et les mêmes factures échouent à chaque exécution horaire du traitement : la correction relève de l'équipe qui gère ces données, pas d'une intervention technique sur le serveur.
+**Résultat attendu :** les messages se répètent, par exemple « Pas de code analytique pour la facture BC4/00017/24 » ou « Facture id … invalide : CODE_FOURNISSEUR est manquant », et les erreurs reviennent par salves à chaque heure pleine. Un message qui se répète à l'identique pour de nombreuses factures désigne une cause commune. Ici, des données manquent dans les factures, par exemple le code analytique, et les mêmes factures échouent à chaque exécution horaire du traitement : la correction relève de l'équipe qui gère ces données, pas d'une intervention technique sur le serveur.
 
 ## 5.3. Décider de la suite et rédiger la qualification dans `reponses-A9.txt`
 
@@ -544,9 +477,7 @@ Décision et raison : escalader à l'équipe propriétaire de l'interface vplog 
   anomalie confirmée, données analytiques manquantes ; signaler aussi l'absence d'alerte.
 ```
 
-**Résultat attendu :** votre qualification contient les mêmes types d'éléments que l'exemple, avec les valeurs visibles le jour de l'atelier.
-
-**Interprétation :** les valeurs et la commande concernée peuvent changer d'un jour à l'autre. Si aucune commande `facture:export` n'apparaît en erreur, la bonne décision est « clore » : le dashboard ne confirme pas le signalement sur la période.
+**Résultat attendu :** votre qualification contient les mêmes types d'éléments que l'exemple, avec les valeurs visibles le jour de l'atelier. Les valeurs et la commande concernée peuvent changer d'un jour à l'autre. Si aucune commande `facture:export` n'apparaît en erreur, la bonne décision est « clore » : le dashboard ne confirme pas le signalement sur la période.
 
 # 6. Recette
 

@@ -44,9 +44,7 @@ Cet atelier ne crée, ne modifie et ne supprime aucune ressource Datadog.
   - **Monitors** ou **Monitoring** : les alertes.
 - **A3-1.1.4** Repérez **Help** en bas du menu.
 
-**Résultat attendu :** vous situez les cinq domaines dans le menu.
-
-**Interprétation :** un domaine visible dans le menu ne prouve pas qu'il est alimenté en données. Par exemple, **Synthetic Monitoring** peut apparaître alors qu'aucun test n'a été créé.
+**Résultat attendu :** vous situez les cinq domaines dans le menu. Un domaine visible dans le menu ne prouve pas qu'il est alimenté en données. Par exemple, **Synthetic Monitoring** peut apparaître alors qu'aucun test n'a été créé.
 
 ## 1.2. Retrouver le dashboard `Monitoring API` avec le champ Search Datadog
 
@@ -57,11 +55,7 @@ Cet atelier ne crée, ne modifie et ne supprime aucune ressource Datadog.
 - **A3-1.2.3** Vérifiez que la première ligne indique `Monitoring API` avec le type **Dashboard**, puis appuyez sur Entrée.
 - **A3-1.2.4** S'il n'apparaît pas, fermez la recherche, ouvrez **Dashboards > Dashboard List** et saisissez `Monitoring API` dans le champ de recherche de la liste.
 
-**Résultat attendu :** le dashboard `Monitoring API` est ouvert.
-
-**Vérification :** son titre est affiché en haut de la page.
-
-**Interprétation :** la recherche globale retrouve un objet connu par son nom. Pour retrouver des événements selon des critères, par exemple « toutes les erreurs de la dernière heure », il faut un explorateur.
+**Résultat attendu :** le dashboard `Monitoring API` est ouvert. Son titre est affiché en haut de la page. La recherche globale retrouve un objet connu par son nom. Pour retrouver des événements selon des critères, par exemple « toutes les erreurs de la dernière heure », il faut un explorateur.
 
 **Attention :** une lettre tapée alors qu'aucun champ n'est sélectionné déclenche un raccourci de Datadog. Par exemple, `G` ouvre la fenêtre **Quick Graph** ; fermez-la avec **Cancel** et cliquez dans le champ avant de taper.
 
@@ -76,9 +70,7 @@ Cet atelier ne crée, ne modifie et ne supprime aucune ressource Datadog.
 - **A3-2.1.3** Repérez la zone des variables, souvent intitulée **Filter by**, et observez le nom et la valeur de chaque variable.
 - **A3-2.1.4** Ne modifiez aucune variable pour l'instant.
 
-**Résultat attendu :** vous savez sur quelle période et sur quel périmètre portent les widgets.
-
-**Interprétation :** une variable à `*` signifie « toutes les valeurs ». Par exemple, une variable `version` à `*` mélange toutes les versions déployées du service.
+**Résultat attendu :** vous savez sur quelle période et sur quel périmètre portent les widgets. Une variable à `*` signifie « toutes les valeurs ». Par exemple, une variable `version` à `*` mélange toutes les versions déployées du service.
 
 ## 2.2. Associer une question à trois widgets de `Monitoring API` : barres, répartition et classement
 
@@ -90,9 +82,7 @@ Cet atelier ne crée, ne modifie et ne supprime aucune ressource Datadog.
 - **A3-2.2.4** Repérez le widget **Appels par resource**, où chaque rectangle est d'autant plus grand que la ressource est appelée.
 - **A3-2.2.5** Pour chacun des trois widgets, déterminez la question à laquelle il répond, puis comparez avec la colonne **Exemple** du tableau ci-dessous.
 
-**Résultat attendu :** la question que vous avez déterminée pour chaque widget correspond à celle du tableau, par exemple « quelle part des appels se termine par un code `200` ? » pour le camembert des codes de réponse.
-
-**Interprétation :** le type de widget suit la question :
+**Résultat attendu :** la question que vous avez déterminée pour chaque widget correspond à celle du tableau, par exemple « quelle part des appels se termine par un code `200` ? » pour le camembert des codes de réponse. Le type de widget suit la question :
 
 | Type de widget | Question typique | Exemple dans `Monitoring API` |
 |---|---|---|
@@ -113,9 +103,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-2.3.4** Observez si le widget se remplit.
 - **A3-2.3.5** Revenez à la période initiale.
 
-**Résultat attendu :** certains widgets se remplissent sur une période plus longue.
-
-**Interprétation :** un service peu sollicité peut ne rien montrer sur 15 minutes et beaucoup sur une journée. Avant de conclure « aucune donnée », élargissez la période, puis réduisez à nouveau le périmètre une fois les données retrouvées.
+**Résultat attendu :** certains widgets se remplissent sur une période plus longue. Un service peu sollicité peut ne rien montrer sur 15 minutes et beaucoup sur une journée. Avant de conclure « aucune donnée », élargissez la période, puis réduisez à nouveau le périmètre une fois les données retrouvées.
 
 # 3. Lire l'état d'un service dans APM
 
@@ -129,11 +117,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-3.1.4** Dans la liste des services, recherchez `eu-interfaces`.
 - **A3-3.1.5** Observez les colonnes **Requests**, **Error Rate** et **p95 Latency** lorsqu'elles sont affichées.
 
-**Résultat attendu :** la ligne `eu-interfaces` affiche des valeurs pour l'environnement et la période sélectionnés.
-
-**Vérification :** si la ligne affiche des tirets, élargissez la période à **Past 1 Day**.
-
-**Interprétation :** la **p95 Latency** est la durée en dessous de laquelle se terminent 95 % des requêtes. Par exemple, une p95 de 800 ms signifie que 5 % des requêtes durent plus de 800 ms. Cette mesure décrit mieux la gêne ressentie qu'une moyenne, qui masque les requêtes les plus lentes.
+**Résultat attendu :** la ligne `eu-interfaces` affiche des valeurs pour l'environnement et la période sélectionnés. Si la ligne affiche des tirets, élargissez la période à **Past 1 Day**. La **p95 Latency** est la durée en dessous de laquelle se terminent 95 % des requêtes. Par exemple, une p95 de 800 ms signifie que 5 % des requêtes durent plus de 800 ms. Cette mesure décrit mieux la gêne ressentie qu'une moyenne, qui masque les requêtes les plus lentes.
 
 **Question :** un taux d'erreur nul prouve-t-il que le service fonctionne bien ?
 
@@ -149,9 +133,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-3.2.4** Repérez un éventuel pic ou une rupture sur l'une des courbes et survolez-le pour lire l'heure.
 - **A3-3.2.5** Si aucune rupture n'est visible, observez que la courbe est stable.
 
-**Résultat attendu :** vous savez dire si le service est stable sur la période et, sinon, à quelle heure le comportement change.
-
-**Interprétation :** une rupture dans la courbe donne une heure de départ ; elle ne donne pas la cause. Les encadrés vides, par exemple « There are no service health monitors configured », sont aussi des constats : aucune alerte ni aucun objectif de fiabilité n'est défini pour ce service.
+**Résultat attendu :** vous savez dire si le service est stable sur la période et, sinon, à quelle heure le comportement change. Une rupture dans la courbe donne une heure de départ ; elle ne donne pas la cause. Les encadrés vides, par exemple « There are no service health monitors configured », sont aussi des constats : aucune alerte ni aucun objectif de fiabilité n'est défini pour ce service.
 
 ## 3.3. Lire la ligne `console` dans la vue Resources : requêtes, temps total et latence p95
 
@@ -162,9 +144,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-3.3.3** Dans le tableau, repérez la ligne `console` et lisez les colonnes **REQUESTS**, **TOTAL TIME** et **P95 LATENCY**.
 - **A3-3.3.4** En haut de la page, ouvrez le filtre **operation** et observez les opérations proposées pour l'environnement `prod`, puis refermez-le sans rien changer.
 
-**Résultat attendu :** en `prod`, une seule opération est proposée, `console`, avec quelques centaines de requêtes par heure, un temps total de plusieurs heures et une p95 de plusieurs minutes.
-
-**Interprétation :** **TOTAL TIME** additionne la durée de toutes les requêtes : quelques centaines de traitements de plusieurs minutes représentent des heures de travail cumulé par heure, donc plusieurs traitements s'exécutent en même temps. Pour un service web, la même lecture servirait à comparer les opérations : une opération lente mais rarement appelée pèse moins qu'une opération moyennement lente appelée en permanence. Lisez toujours la latence avec le volume.
+**Résultat attendu :** en `prod`, une seule opération est proposée, `console`, avec quelques centaines de requêtes par heure, un temps total de plusieurs heures et une p95 de plusieurs minutes. **TOTAL TIME** additionne la durée de toutes les requêtes : quelques centaines de traitements de plusieurs minutes représentent des heures de travail cumulé par heure, donc plusieurs traitements s'exécutent en même temps. Pour un service web, la même lecture servirait à comparer les opérations : une opération lente mais rarement appelée pèse moins qu'une opération moyennement lente appelée en permanence. Lisez toujours la latence avec le volume.
 
 ## 3.4. Ouvrir une trace de `eu-interfaces` et lire sa cascade sans interpréter le code
 
@@ -179,9 +159,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-3.4.7** Survolez les barres pour lire leur nom et leur durée.
 - **A3-3.4.8** Fermez la trace.
 
-**Résultat attendu :** vous repérez où se concentre la durée de cette requête.
-
-**Interprétation :** la cascade se lit comme un diagramme de Gantt : chaque barre est une étape, sa longueur est sa durée. Pour les traitements `console`, une trace dure plusieurs minutes alors que les appels vers `rabbitmq` ou `amqp` ne durent que quelques millisecondes : le temps est passé dans le traitement lui-même, sans être détaillé. Si au contraire une étape nommée par exemple `pdo` occupait 90 % de la barre, la requête aurait surtout attendu la base de données. Dans les deux cas, c'est une piste à transmettre à l'équipe technique, pas encore une cause démontrée : une seule trace peut être exceptionnelle.
+**Résultat attendu :** vous repérez où se concentre la durée de cette requête. La cascade se lit comme un diagramme de Gantt : chaque barre est une étape, sa longueur est sa durée. Pour les traitements `console`, une trace dure plusieurs minutes alors que les appels vers `rabbitmq` ou `amqp` ne durent que quelques millisecondes : le temps est passé dans le traitement lui-même, sans être détaillé. Si au contraire une étape nommée par exemple `pdo` occupait 90 % de la barre, la requête aurait surtout attendu la base de données. Dans les deux cas, c'est une piste à transmettre à l'équipe technique, pas encore une cause démontrée : une seule trace peut être exceptionnelle.
 
 ## 3.5. Repérer les versions déployées de `eu-interfaces` dans la vue Deployments
 
@@ -191,9 +169,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-3.5.2** Dans le tableau, observez la colonne **VERSION**, la date d'apparition (**FIRST SEEN**) et le statut **ACTIVE**.
 - **A3-3.5.3** Si aucune version n'est affichée, observez-le : le service ne transmet peut-être pas son numéro de version.
 
-**Résultat attendu :** vous savez combien de versions sont actives et depuis quand la plus récente est apparue.
-
-**Interprétation :** une dégradation qui commence juste après un déploiement rend ce déploiement suspect, pas coupable. Par exemple, une hausse de trafic au même moment peut produire le même effet.
+**Résultat attendu :** vous savez combien de versions sont actives et depuis quand la plus récente est apparue. Une dégradation qui commence juste après un déploiement rend ce déploiement suspect, pas coupable. Par exemple, une hausse de trafic au même moment peut produire le même effet.
 
 # 4. Rejoindre les autres signaux
 
@@ -208,9 +184,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-4.1.5** Dans la colonne de gauche, repérez la facette **Status** et observez la répartition entre `Info`, `Warn`, `Error` et les autres statuts.
 - **A3-4.1.6** Ouvrez un log en erreur et lisez son message, sans le recopier.
 
-**Résultat attendu :** plusieurs centaines de milliers de logs sont visibles sur une journée, dont une part importante en `Error`.
-
-**Interprétation :** un grand nombre de logs `Error` ne signifie pas forcément un incident : une application peut écrire en `Error` des situations attendues, par exemple « aucun fichier à exporter ». C'est ce qui rend la lecture des logs difficile sans connaître l'application, et c'est pourquoi on part d'une vue agrégée avant de lire un log isolé.
+**Résultat attendu :** plusieurs centaines de milliers de logs sont visibles sur une journée, dont une part importante en `Error`. Un grand nombre de logs `Error` ne signifie pas forcément un incident : une application peut écrire en `Error` des situations attendues, par exemple « aucun fichier à exporter ». C'est ce qui rend la lecture des logs difficile sans connaître l'application, et c'est pourquoi on part d'une vue agrégée avant de lire un log isolé.
 
 ## 4.2. Ouvrir le résumé RUM de `peopulse` avec Search Datadog et lire les vues et le taux d'erreur sans ouvrir de session
 
@@ -223,9 +197,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-4.2.5** Observez le nombre total de vues (**total views**), le temps de chargement (**Loading Time**) et le taux d'erreur (**Error Rate**), ainsi que leur évolution par rapport à la période précédente.
 - **A3-4.2.6** N'ouvrez aucune session individuelle ni aucun Session Replay.
 
-**Résultat attendu :** sur la période par défaut d'une semaine, vous lisez plus de cent mille vues, un temps de chargement d'environ une seconde et un taux d'erreur d'environ 1 %.
-
-**Interprétation :** un clic sur **Digital Experience** dans le menu ouvre une autre page, **Journey Monitoring** : la recherche globale est ici plus directe. Les sessions individuelles peuvent contenir des données personnelles ; les chiffres agrégés suffisent pour mesurer l'impact sur les utilisateurs. `peopulse` et `eu-interfaces` sont deux applications distinctes : leurs chiffres ne se lisent pas ensemble.
+**Résultat attendu :** sur la période par défaut d'une semaine, vous lisez plus de cent mille vues, un temps de chargement d'environ une seconde et un taux d'erreur d'environ 1 %. Un clic sur **Digital Experience** dans le menu ouvre une autre page, **Journey Monitoring** : la recherche globale est ici plus directe. Les sessions individuelles peuvent contenir des données personnelles ; les chiffres agrégés suffisent pour mesurer l'impact sur les utilisateurs. `peopulse` et `eu-interfaces` sont deux applications distinctes : leurs chiffres ne se lisent pas ensemble.
 
 ## 4.3. Lire la liste des monitors, filtrer par état et ouvrir un monitor existant
 
@@ -238,9 +210,7 @@ Un camembert donne une répartition, mais ne dit pas quand elle a changé : pour
 - **A3-4.3.5** Repérez sa requête, son seuil et l'historique de ses états.
 - **A3-4.3.6** Revenez à la liste sans rien modifier.
 
-**Résultat attendu :** vous savez trouver les monitors en alerte et lire la règle qui les déclenche.
-
-**Interprétation :** `No Data` signifie que le monitor ne reçoit plus de données. Cela peut venir d'un service arrêté, mais aussi d'une collecte interrompue ou d'un filtre mal écrit. Ce n'est pas la même chose qu'une alerte.
+**Résultat attendu :** vous savez trouver les monitors en alerte et lire la règle qui les déclenche. `No Data` signifie que le monitor ne reçoit plus de données. Cela peut venir d'un service arrêté, mais aussi d'une collecte interrompue ou d'un filtre mal écrit. Ce n'est pas la même chose qu'une alerte.
 
 # 5. Formuler une conclusion prudente
 
@@ -281,11 +251,7 @@ Prochaine vue à ouvrir : Trace Explorer filtré sur console, plusieurs traces l
 - **A3-5.2.3** Ouvrez successivement les trois premières traces en vue **Waterfall**.
 - **A3-5.2.4** Pour chacune, comparez la longueur de la barre principale `eu-interfaces` avec celle des appels placés dessous.
 
-**Résultat attendu :** dans les trois traces, la barre principale occupe presque toute la durée et les appels externes ne durent que quelques millisecondes.
-
-**Vérification :** l'hypothèse de référence est confirmée sur trois traces et non sur une seule.
-
-**Interprétation :** l'hypothèse devient un fait limité à l'échantillon observé : « sur trois traces longues, le temps est passé dans le traitement lui-même ». La suite de l'analyse, savoir ce que fait le traitement pendant ces minutes, demande une instrumentation plus fine que seule l'équipe technique peut ajouter.
+**Résultat attendu :** dans les trois traces, la barre principale occupe presque toute la durée et les appels externes ne durent que quelques millisecondes. L'hypothèse de référence est confirmée sur trois traces et non sur une seule. L'hypothèse devient un fait limité à l'échantillon observé : « sur trois traces longues, le temps est passé dans le traitement lui-même ». La suite de l'analyse, savoir ce que fait le traitement pendant ces minutes, demande une instrumentation plus fine que seule l'équipe technique peut ajouter.
 
 ## Synthèse
 
